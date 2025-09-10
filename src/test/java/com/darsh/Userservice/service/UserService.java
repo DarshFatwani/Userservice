@@ -14,12 +14,11 @@ import java.util.function.UnaryOperator;
 
 @Service
 @RequiredArgsConstructor
-public class UserService
-{
+public class UserService {
     @Autowired
     private final UserRepository userRepository;
 
-    public UserInfoDto createOrUpdateUser(UserInfoDto userInfoDto){
+    public UserInfoDto createOrUpdateUser(UserInfoDto userInfoDto) {
         UnaryOperator<UserInfo> updatingUser = user -> {
             return userRepository.save(userInfoDto.transformToUserInfo());
         };
@@ -41,9 +40,9 @@ public class UserService
         );
     }
 
-    public UserInfoDto getUser(UserInfoDto userInfoDto) throws Exception{
+    public UserInfoDto getUser(UserInfoDto userInfoDto) throws Exception {
         Optional<UserInfo> userInfoDtoOpt = userRepository.findByUserId(userInfoDto.getUserId());
-        if(userInfoDtoOpt.isEmpty()){
+        if (userInfoDtoOpt.isEmpty()) {
             throw new Exception("User not found");
         }
         UserInfo userInfo = userInfoDtoOpt.get();

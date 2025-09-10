@@ -1,7 +1,6 @@
 package com.darsh.Userservice.entities;
 
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +21,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @Table(name = "users")
-public class UserInfo
-{
+public class UserInfo {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

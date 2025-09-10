@@ -11,8 +11,7 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface UserRepository extends CrudRepository<UserInfo, String>
-{
+public interface UserRepository extends CrudRepository<UserInfo, String> {
 
     Optional<UserInfo> findByUserId(String userId);
 

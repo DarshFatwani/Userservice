@@ -1,7 +1,6 @@
 package com.darsh.Userservice.consumer;
 
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.darsh.Userservice.entities.UserInfoDto;
 import com.darsh.Userservice.repository.UserRepository;
@@ -13,8 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceConsumer
-{
+public class AuthServiceConsumer {
 
     @Autowired
     private UserService userService;
@@ -24,10 +22,10 @@ public class AuthServiceConsumer
 
     @KafkaListener(topics = "${spring.kafka.topic-json.name}", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(UserInfoDto eventData) {
-        try{
+        try {
             // Todo: Make it transactional, to handle idempotency and validate email, phoneNumber etc
             userService.createOrUpdateUser(eventData);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("AuthServiceConsumer: Exception is thrown while consuming kafka event");
         }

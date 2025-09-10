@@ -13,34 +13,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class UserController
-{
+public class UserController {
 
     @Autowired
     private UserService userService;
 
     @GetMapping("/user/v1/getUser")
-    public ResponseEntity<UserInfoDto> getUser(@RequestBody UserInfoDto userInfoDto){
-        try{
+    public ResponseEntity<UserInfoDto> getUser(@RequestBody UserInfoDto userInfoDto) {
+        try {
             UserInfoDto user = userService.getUser(userInfoDto);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PostMapping("/user/v1/createUpdate")
-    public ResponseEntity<UserInfoDto> createUpdateUser(UserInfoDto userInfoDto){
-        try{
+    public ResponseEntity<UserInfoDto> createUpdateUser(UserInfoDto userInfoDto) {
+        try {
             UserInfoDto user = userService.createOrUpdateUser(userInfoDto);
             return new ResponseEntity<>(user, HttpStatus.OK);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @GetMapping("/health")
-    public ResponseEntity<Boolean> checkHealth(){
+    public ResponseEntity<Boolean> checkHealth() {
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
 

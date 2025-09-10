@@ -13,8 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserInfoDto
-{
+public class UserInfoDto {
 
     @JsonProperty("user_id")
     @NonNull
